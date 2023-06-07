@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Глеб  Орлов](https://up.htmlacademy.ru/javascript/29/user/1535715).
-* Наставник: `Arthur Litovko`.
+* Наставник: [Arthur Litovko](https://github.com/baileys-li).
 
 ---
 
