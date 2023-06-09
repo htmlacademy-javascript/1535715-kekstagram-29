@@ -1,8 +1,6 @@
-function checkStringLength(string, maxLength){
-  return string.length <= maxLength;
-}
+const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
-function checkPalindrome(string){
+const checkPalindrome = (string) =>{
   string = string.replaceAll(' ', '').toLowerCase();
   let reversedString = '';
   for(let i = string.length; i >= 0; i--){
@@ -11,7 +9,7 @@ function checkPalindrome(string){
   return string === reversedString;
 }
 
-function makePositiveInteger(string){
+const makePositiveInteger = (string) =>{
   string = string.toString();
   let positiveInteger = '';
   for(let i = 0; i < string.length; i++){
