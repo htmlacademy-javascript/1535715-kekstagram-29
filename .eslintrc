@@ -1,16 +1,20 @@
 root: true
-
-parserOptions:
-  ecmaVersion: 2022
-  sourceType: "module"
-
 env:
-  es2022: true
   browser: true
+  es2022: true
+extends:
+  - htmlacademy/vanilla
+  - plugin:@typescript-eslint/recommended
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaVersion: latest
+  sourceType: module
+plugins:
+  - '@typescript-eslint'
 
 globals:
   noUiSlider: readonly
   Pristine: readonly
 
-extends:
-  "htmlacademy/vanilla"
+rules:
+  indent: [error, tab]
