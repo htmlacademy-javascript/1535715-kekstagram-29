@@ -2,7 +2,7 @@ const PHOTO_COUNT = 25;
 const MIN_LIKES = 15;
 const MAX_LIKES = 200;
 const MAX_COMMENTS = 30;
-const MAX_COMMENT_ID = 100;
+const MAX_COMMENT_ID = 1_000_000;
 const COMMENTS = [
 	"Всё отлично!",
 	"В целом всё неплохо. Но не всё.",
