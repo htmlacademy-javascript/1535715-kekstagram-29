@@ -1,4 +1,4 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
 
 settings:
   autoInstallPeers: true
@@ -12,7 +12,7 @@ devDependencies:
     specifier: 9.1.1
     version: 9.1.1(eslint@8.42.0)
   vite:
-    specifier: ^4.3.9
+    specifier: 4.3.9
     version: 4.3.9
 
 packages:
