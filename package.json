@@ -1,33 +1,33 @@
 {
-  "name": "kekstagram",
-  "version": "29.0.0",
-  "private": true,
-  "description": "Личный проект «Кекстаграм» от HTML Academy",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:htmlacademy-javascript/1535715-kekstagram-29.git"
-  },
-  "bugs": {
-    "url": "https://github.com/htmlacademy-javascript/1535715-kekstagram-29/issues"
-  },
-  "devDependencies": {
-    "eslint": "8.42.0",
-    "eslint-config-htmlacademy": "9.1.1",
-    "vite": "4.3.9"
-  },
-  "license": "MIT",
-  "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint js/"
-  },
-  "engines": {
-    "node": "18",
-    "npm": "9"
-  },
-  "volta": {
-    "node": "18.16.0"
-  },
-  "packageManager": "pnpm@8.6.3"
+	"name": "kekstagram",
+	"version": "29.0.0",
+	"private": true,
+	"description": "Личный проект «Кекстаграм» от HTML Academy",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:htmlacademy-javascript/1535715-kekstagram-29.git"
+	},
+	"bugs": {
+		"url": "https://github.com/htmlacademy-javascript/1535715-kekstagram-29/issues"
+	},
+	"devDependencies": {
+		"eslint": "8.42.0",
+		"eslint-config-htmlacademy": "9.1.1",
+		"vite": "4.3.9"
+	},
+	"license": "MIT",
+	"scripts": {
+		"start": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"lint": "eslint js/"
+	},
+	"engines": {
+		"node": "18",
+		"npm": "9"
+	},
+	"volta": {
+		"node": "18.16.0"
+	},
+	"packageManager": "pnpm@8.6.3"
 }
