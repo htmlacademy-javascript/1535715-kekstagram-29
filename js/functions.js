@@ -1,6 +1,6 @@
-const checkStringLength = (string, maxLength) => string.length <= maxLength;
+export const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
-const checkPalindrome = (string) => {
+export const checkPalindrome = (string) => {
 	string = string.replaceAll(' ', '').toLowerCase();
 	let reversedString = '';
 	for (let i = string.length; i >= 0; i--) {
@@ -9,7 +9,7 @@ const checkPalindrome = (string) => {
 	return string === reversedString;
 };
 
-const makePositiveInteger = (string) => {
+export const makePositiveInteger = (string) => {
 	string = string.toString();
 	let positiveInteger = '';
 	for (let i = 0; i < string.length; i++) {
@@ -20,15 +20,18 @@ const makePositiveInteger = (string) => {
 	return positiveInteger === '' ? NaN : Math.abs(parseInt(positiveInteger, 10));
 };
 
-const checkMeetingTime = (workStartTime, workEndTime, meetingStartTime, meetingDuration) =>{
-	const [workStartHour, workStartMinute] = workStartTime.split(':').map(Number);
-	const [workEndHour, workEndMinute] = workEndTime.split(':').map(Number);
-	const [meetingStartHour, meetingStartMinute] = meetingStartTime.split(':').map(Number);
-	const meetingEndHour = Math.floor((meetingStartHour * 60 + meetingStartMinute + meetingDuration) / 60);
-	const meetingEndMinute = (meetingStartHour * 60 + meetingStartMinute + meetingDuration) % 60;
+const sliceNumbers = (numbers) => numbers.split(':').map(Number);
 
-	if ((meetingEndHour > workEndHour || (meetingEndHour === workEndHour && meetingEndMinute > workEndMinute)) || (meetingStartHour < workStartHour || (meetingStartHour === workStartHour && meetingStartMinute < workStartMinute))) {
-		return false;
-	}
-	return true;
+export const checkMeetingTime = (workStartTime, workEndTime, meetingStartTime, meetingDuration) => {
+	const [workStartHour, workStartMinute] = sliceNumbers(workStartTime);
+	const [workEndHour, workEndMinute] = sliceNumbers(workEndTime);
+	const [meetingStartHour, meetingStartMinute] = sliceNumbers(meetingStartTime);
+	const meetingToMinutes = meetingStartHour * 60 + meetingStartMinute + meetingDuration;
+	const meetingEndHour = Math.floor((meetingToMinutes) / 60);
+	const meetingEndMinute = (meetingToMinutes) % 60;
+
+	const isFinishAfterWork = meetingEndHour > workEndHour || (meetingEndHour === workEndHour && meetingEndMinute > workEndMinute);
+	const isStartBeforeWork = meetingStartHour < workStartHour || (meetingStartHour === workStartHour && meetingStartMinute < workStartMinute);
+
+	return !(isFinishAfterWork || isStartBeforeWork);
 };
