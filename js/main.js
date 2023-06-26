@@ -1,1 +1,1 @@
-import {photos} from './mock.js';
+import './draw.js';
