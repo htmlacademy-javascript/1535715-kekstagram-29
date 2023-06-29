@@ -11,11 +11,9 @@ const closePhoto = () => {
 	bigPicture.classList.add('hidden');
 	document.body.classList.remove('modal-open');
 	document.querySelector('.social__comments').textContent = '';
+	document.removeEventListener('keydown', buttonKeydownHandler);
 };
 
-const buttonClickHandler = () => {
-	closePhoto();
-};
 const buttonKeydownHandler = (evt) => {
 	if (isEscapeKey(evt)) {
 		closePhoto();
@@ -36,6 +34,8 @@ const showComments = (comments) => {
 	commentsBlock.append(commentFragment);
 };
 
+closeButton.addEventListener('click', () => closePhoto());
+
 const showFullPhoto = (evt) => {
 	if (evt.target.tagName === 'IMG') {
 		bigPicture.classList.remove('hidden');
@@ -51,8 +51,7 @@ const showFullPhoto = (evt) => {
 		showComments(chosenPhoto.comments);
 
 		document.body.classList.add('modal-open');
-		closeButton.addEventListener('click', () => buttonClickHandler(), {once: true});
-		document.addEventListener('keydown', (evt) => buttonKeydownHandler(evt), {once: true});
+		document.addEventListener('keydown', buttonKeydownHandler);
 	}
 };
 
