@@ -11,10 +11,10 @@ const closePhoto = () => {
 	bigPicture.classList.add('hidden');
 	document.body.classList.remove('modal-open');
 	document.querySelector('.social__comments').textContent = '';
-	document.removeEventListener('keydown', buttonKeydownHandler);
+	document.removeEventListener('keydown', documentEscapeHandler);
 };
 
-const buttonKeydownHandler = (evt) => {
+const documentEscapeHandler = (evt) => {
 	if (isEscapeKey(evt)) {
 		closePhoto();
 	}
@@ -51,7 +51,7 @@ const showFullPhoto = (evt) => {
 		showComments(chosenPhoto.comments);
 
 		document.body.classList.add('modal-open');
-		document.addEventListener('keydown', buttonKeydownHandler);
+		document.addEventListener('keydown', documentEscapeHandler);
 	}
 };
 
