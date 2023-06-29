@@ -14,11 +14,11 @@ const closePhoto = () => {
 	document.removeEventListener('keydown', documentEscapeHandler);
 };
 
-const documentEscapeHandler = (evt) => {
+function documentEscapeHandler(evt) {
 	if (isEscapeKey(evt)) {
 		closePhoto();
 	}
-};
+}
 
 const showComments = (comments) => {
 	const commentFragment = document.createDocumentFragment();
