@@ -13,6 +13,8 @@ const commentsCurrentCount = bigPicture.querySelector('.comments-current-count')
 const pictureCaption = bigPicture.querySelector('.social__caption');
 const commentsButton = bigPicture.querySelector('.comments-loader');
 
+let addComments;
+
 const closePhoto = () => {
 	commentsButton.classList.remove('hidden');
 	bigPicture.classList.add('hidden');
@@ -57,7 +59,7 @@ const showFullPhoto = (evt) => {
 		const photoComments = chosenPhoto.comments;
 
 		let shownComments = 0;
-		const addComments = () =>{
+		addComments = () =>{
 			const remainingComments = photoComments.length - shownComments;
 			const newComments = Math.min(remainingComments, 5);
 			const commentsToShow = photoComments.slice(shownComments, shownComments + newComments);
