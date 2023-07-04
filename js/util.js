@@ -25,5 +25,3 @@ export const createUnrepeatedId = (min, max) => {
 export const getRandomArrayElement = (elements) => elements[generateRandomInteger(0, elements.length - 1)];
 
 export const isEscapeKey = (evt) => evt.key === 'Escape';
-
-export const findElement = (selector) => document.querySelector(selector);
