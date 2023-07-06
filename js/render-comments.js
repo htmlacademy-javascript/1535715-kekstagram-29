@@ -1,4 +1,3 @@
-// const commentsCount = document.querySelector('.comments-count');
 const commentsCurrentCount = document.querySelector('.comments-current-count');
 const commentsButton = document.querySelector('.comments-loader');
 const commentsBlock = document.querySelector('.social__comments');
