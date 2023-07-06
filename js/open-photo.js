@@ -11,7 +11,9 @@ const commentsButton = bigPicture.querySelector('.comments-loader');
 
 let comments;
 
+
 const closePhoto = () => {
+	commentsButton.classList.remove('hidden');
 	bigPicture.classList.add('hidden');
 	document.body.classList.remove('modal-open');
 	commentsButton.classList.remove('hidden');
@@ -23,6 +25,9 @@ function documentEscapeHandler(evt) {
 	if (isEscapeKey(evt)) {
 		closePhoto();
 	}
+}
+function buttonCommentClickHandler () {
+	addComments();
 }
 
 function commentsButtonClickHandler(){
