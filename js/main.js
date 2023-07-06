@@ -1,2 +1,1 @@
-import './draw.js';
-import './open-photo.js';
+import './render-photos.js';
