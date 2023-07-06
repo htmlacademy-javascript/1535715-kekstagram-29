@@ -15,7 +15,10 @@ photos.forEach((photo)=>{
 	photoElement.querySelector('.picture__likes').textContent = likes;
 	photoElement.querySelector('.picture__comments').textContent = comments.length;
 	photoElement.dataset.id = id;
-	photoElement.addEventListener('click', () => showFullPhoto(photo));
+	photoElement.addEventListener('click', (evt) => {
+		evt.preventDefault();
+		showFullPhoto(photo);
+	});
 	fragment.append(photoElement);
 });
 

@@ -14,7 +14,7 @@ let comments;
 const closePhoto = () => {
 	bigPicture.classList.add('hidden');
 	document.body.classList.remove('modal-open');
-	commentsButton.classList.toggle('hidden');
+	commentsButton.classList.remove('hidden');
 	document.removeEventListener('keydown', documentEscapeHandler);
 	commentsButton.removeEventListener('click', commentsButtonClickHandler);
 };
