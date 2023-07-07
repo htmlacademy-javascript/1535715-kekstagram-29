@@ -11,7 +11,6 @@ const commentsButton = bigPicture.querySelector('.comments-loader');
 
 let commentsButtonClickHandler;
 
-
 const closePhoto = () => {
 	commentsButton.classList.remove('hidden');
 	bigPicture.classList.add('hidden');
@@ -26,9 +25,6 @@ function documentEscapeHandler(evt) {
 	if (isEscapeKey(evt)) {
 		closePhoto();
 	}
-}
-function buttonCommentClickHandler () {
-	addComments();
 }
 
 closeButton.addEventListener('click', () => closePhoto());
