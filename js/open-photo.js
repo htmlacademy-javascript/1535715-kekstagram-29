@@ -1,5 +1,5 @@
 import { isEscapeKey } from './util.js';
-import { addComments, resetComments } from './render-comments.js';
+import { createCommentRenderer, resetComments } from './render-comments.js';
 
 const bigPicture = document.querySelector('.big-picture');
 const mainPicture = bigPicture.querySelector('.big-picture__img img');
@@ -9,12 +9,13 @@ const pictureCaption = bigPicture.querySelector('.social__caption');
 const closeButton = document.querySelector('.big-picture__cancel');
 const commentsButton = bigPicture.querySelector('.comments-loader');
 
-let comments;
+let commentsButtonClickHandler;
 
 const closePhoto = () => {
 	bigPicture.classList.add('hidden');
 	document.body.classList.remove('modal-open');
 	commentsButton.classList.remove('hidden');
+	resetComments();
 	document.removeEventListener('keydown', documentEscapeHandler);
 	commentsButton.removeEventListener('click', commentsButtonClickHandler);
 };
@@ -23,10 +24,6 @@ function documentEscapeHandler(evt) {
 	if (isEscapeKey(evt)) {
 		closePhoto();
 	}
-}
-
-function commentsButtonClickHandler(){
-	comments();
 }
 
 closeButton.addEventListener('click', () => closePhoto());
@@ -38,12 +35,10 @@ export const showFullPhoto = (photo) => {
 	commentsCount.textContent = photo.comments.length;
 	pictureCaption.textContent = photo.description;
 
-	comments = addComments(photo.comments);
-
-	resetComments();
-	comments();
+	commentsButtonClickHandler = createCommentRenderer(photo.comments);
 
 	document.body.classList.add('modal-open');
 	commentsButton.addEventListener('click', commentsButtonClickHandler);
+	commentsButton.click();
 	document.addEventListener('keydown', documentEscapeHandler);
 };

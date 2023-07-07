@@ -19,12 +19,14 @@ const renderComments = (comments) => {
 	commentsBlock.append(commentFragment);
 };
 
-export const addComments = (comments) => () => {
-	const remainingComments = comments.length - shownComments;
-	const newComments = Math.min(remainingComments, 5);
-	const commentsToShow = comments.slice(shownComments, shownComments + newComments);
+export const createCommentRenderer = (comments) => () => {
+	const remainingAmount = comments.length - shownComments;
+	const newAmount = shownComments + Math.min(remainingAmount, 5);
+	const commentsToShow = comments.slice(shownComments, newAmount);
+
 	renderComments(commentsToShow);
-	shownComments += newComments;
+
+	shownComments = newAmount;
 	commentsCurrentCount.textContent = shownComments;
 	if (shownComments >= comments.length) {
 		commentsButton.classList.add('hidden');
