@@ -1,4 +1,4 @@
-import { isEscapeKey } from "./util.js";
+import { isEscapeKey } from './util.js';
 import './validation.js';
 
 const imgUploadInput = document.querySelector('.img-upload__input');
@@ -10,11 +10,11 @@ const imgComment = document.querySelector('.text__description');
 
 const documentEscapeHandler = (evt) => {
 	if (isEscapeKey(evt)) {
-		closeImgUploadWindow()
+		closeImgUploadWindow();
 	}
-}
+};
 
-const closeImgUploadWindow = () => {
+function closeImgUploadWindow() {
 	imgUploadOverlay.classList.add('hidden');
 	document.body.classList.remove('modal-open');
 	imgUploadInput.value = '';
@@ -27,7 +27,7 @@ imgUploadInput.addEventListener('change', () => {
 	imgUploadOverlay.classList.remove('hidden');
 	document.body.classList.add('modal-open');
 	document.addEventListener('keydown', documentEscapeHandler);
-})
+});
 
 imgUploadCancel.addEventListener('click', () => closeImgUploadWindow());
 imgComment.addEventListener('keydown', (evt) => evt.stopPropagation());
