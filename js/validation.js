@@ -2,48 +2,28 @@ const imgUploadForm = document.querySelector('.img-upload__form');
 const imgHashTags = imgUploadForm.querySelector('.text__hashtags');
 const imgComment = imgUploadForm.querySelector('.text__description');
 
-const hashTagRegExp = /^#[a-z0-9]{1,19}$/i;
+const HASHTAG_REGEX = /^#[a-z0-9]{1,19}$/i;
 
-let hashTags;
-
-const pristine = new Pristine(imgUploadForm, {
+export const pristine = new Pristine(imgUploadForm, {
 	classTo: 'img-upload__field-wrapper',
 	errorTextParent: 'img-upload__field-wrapper'
 }, false);
 
+const normalizeHashtags = (hashtagsString) => hashtagsString.trim().split(' ').filter((hashtag) => Boolean(hashtag.length));
+
 const validateComment = (value) => value.length >= 0 && value.length <= 140;
-
-const validateHashTags = (value) => {
-	hashTags = value.split(' ');
-	if (hashTags.length > 5) {
-		return false;
-	}
-	for (let i = 0; i < hashTags.length; i++) {
-		for (let j = i + 1; j < hashTags.length; j++) {
-			if (hashTags[i].toLowerCase() === hashTags[j].toLowerCase()) {
-				return false;
-			}
-		}
-	}
-	return hashTags[0] === '' || hashTags.every((hashTag) => hashTagRegExp.test(hashTag));
+const checkHashtagsLength = (value) => normalizeHashtags(value).length <= 5;
+const areHashtagsUnique = (value) => {
+	const lowerCaseHashtags = normalizeHashtags(value).map((hashtag) => hashtag.toLowerCase());
+	return lowerCaseHashtags.length === new Set(lowerCaseHashtags).size;
 };
-
-const getHashTagErrorMessage = () => {
-	if (hashTags.length > 5) {
-		return 'Максимальное количество хештегов 5';
-	}
-	for (let i = 0; i < hashTags.length; i++) {
-		for (let j = i + 1; j < hashTags.length; j++) {
-			if (hashTags[i].toLowerCase() === hashTags[j].toLowerCase()) {
-				return 'Повторяющиеся хештеги запрещены';
-			}
-		}
-	}
-	return 'Недопустимые символы запрещены';
-};
+const areHashtagsValid = (value) => normalizeHashtags(value).every((hashtag) => HASHTAG_REGEX.test(hashtag));
 
 pristine.addValidator(imgComment, validateComment, 'Длина комментария не должна превышать 140 символов.');
-pristine.addValidator(imgHashTags, validateHashTags, getHashTagErrorMessage);
+pristine.addValidator(imgHashTags, checkHashtagsLength, 'Максимальное количество хештегов 5');
+pristine.addValidator(imgHashTags, areHashtagsUnique, 'Одинаковые хештеги запрещены');
+pristine.addValidator(imgHashTags, areHashtagsValid, 'Недопустимые символы');
+
 
 imgUploadForm.addEventListener('submit', (evt) => {
 	evt.preventDefault();

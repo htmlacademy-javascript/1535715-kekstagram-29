@@ -1,12 +1,11 @@
 import { isEscapeKey } from './util.js';
-import './validation.js';
+import { pristine } from './validation.js';
 
 const imgUploadInput = document.querySelector('.img-upload__input');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
 const imgUploadCancel = document.querySelector('.img-upload__cancel');
 const imgHashTags = document.querySelector('.text__hashtags');
 const imgComment = document.querySelector('.text__description');
-
 
 const documentEscapeHandler = (evt) => {
 	if (isEscapeKey(evt)) {
@@ -21,6 +20,7 @@ function closeImgUploadWindow() {
 	document.removeEventListener('keydown', documentEscapeHandler);
 	imgHashTags.value = '';
 	imgComment.value = '';
+	pristine.validate();
 }
 
 imgUploadInput.addEventListener('change', () => {
