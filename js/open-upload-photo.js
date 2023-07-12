@@ -1,5 +1,7 @@
 import { isEscapeKey } from './util.js';
 import { pristine } from './validation.js';
+import { resetScale } from './scale.js';
+import { resetEffects } from './effects.js';
 
 const imgUploadInput = document.querySelector('.img-upload__input');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
@@ -20,6 +22,8 @@ function closeImgUploadWindow() {
 	document.removeEventListener('keydown', documentEscapeHandler);
 	imgHashTags.value = '';
 	imgComment.value = '';
+	resetScale();
+	resetEffects();
 	pristine.validate();
 }
 
