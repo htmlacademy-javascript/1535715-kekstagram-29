@@ -1,5 +1,5 @@
 import { isEscapeKey } from './util.js';
-import { pristine } from './validation.js';
+import { pristine, resetForm } from './validation.js';
 import { resetScale } from './scale.js';
 import { resetEffects } from './effects.js';
 
@@ -18,10 +18,8 @@ const documentEscapeHandler = (evt) => {
 function closeImgUploadWindow() {
 	imgUploadOverlay.classList.add('hidden');
 	document.body.classList.remove('modal-open');
-	imgUploadInput.value = '';
 	document.removeEventListener('keydown', documentEscapeHandler);
-	imgHashTags.value = '';
-	imgComment.value = '';
+	resetForm();
 	resetScale();
 	resetEffects();
 	pristine.validate();
