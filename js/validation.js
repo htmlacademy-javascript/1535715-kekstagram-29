@@ -3,16 +3,20 @@ const imgHashTags = imgUploadForm.querySelector('.text__hashtags');
 const imgComment = imgUploadForm.querySelector('.text__description');
 
 const HASHTAG_REGEX = /^#[a-z0-9]{1,19}$/i;
+const MAX_COMMENT_LENGTH = 140;
+const MAX_HASHTAGS_LENGTH = 5;
 
-export const pristine = new Pristine(imgUploadForm, {
+const pristine = new Pristine(imgUploadForm, {
 	classTo: 'img-upload__field-wrapper',
 	errorTextParent: 'img-upload__field-wrapper'
-}, false);
+});
+
+const resetForm = () => imgUploadForm.reset();
 
 const normalizeHashtags = (hashtagsString) => hashtagsString.trim().split(' ').filter((hashtag) => Boolean(hashtag.length));
 
-const validateComment = (value) => value.length >= 0 && value.length <= 140;
-const checkHashtagsLength = (value) => normalizeHashtags(value).length <= 5;
+const validateComment = (value) => value.length >= 0 && value.length <= MAX_COMMENT_LENGTH;
+const checkHashtagsLength = (value) => normalizeHashtags(value).length <= MAX_HASHTAGS_LENGTH;
 const areHashtagsUnique = (value) => {
 	const lowerCaseHashtags = normalizeHashtags(value).map((hashtag) => hashtag.toLowerCase());
 	return lowerCaseHashtags.length === new Set(lowerCaseHashtags).size;
@@ -24,8 +28,9 @@ pristine.addValidator(imgHashTags, checkHashtagsLength, 'Максимально�
 pristine.addValidator(imgHashTags, areHashtagsUnique, 'Одинаковые хештеги запрещены');
 pristine.addValidator(imgHashTags, areHashtagsValid, 'Недопустимые символы');
 
-
 imgUploadForm.addEventListener('submit', (evt) => {
 	evt.preventDefault();
 	pristine.validate();
 });
+
+export {pristine, resetForm};
