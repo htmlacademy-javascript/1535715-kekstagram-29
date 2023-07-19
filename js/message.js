@@ -6,7 +6,7 @@ const errorMessage = document.querySelector('#error').content.querySelector('.er
 const closeMessageWindow = () => {
 	const messageWindow = document.querySelector('.success') || document.querySelector('.error');
 	document.body.removeChild(messageWindow);
-	document.removeEventListener('keydown', documentEscapeHandler);
+	document.removeEventListener('keydown', documentEscapeHandler, true);
 	document.removeEventListener('click', documentClickHandler);
 };
 
@@ -25,9 +25,9 @@ function documentClickHandler(evt){
 
 const showMessageWindow = (messageElement, buttonClass) => {
 	document.body.append(messageElement);
-	document.addEventListener('keydown', documentEscapeHandler);
+	document.addEventListener('keydown', documentEscapeHandler, true);
 	document.addEventListener('click', documentClickHandler);
-	messageElement.querySelector(buttonClass).addEventListener('click', closeMessageWindow);
+	messageElement.querySelector(buttonClass).addEventListener('click', () => closeMessageWindow());
 };
 
 const showSuccessWindow = () => showMessageWindow(successMessage, '.success__button');
