@@ -29,7 +29,7 @@ function documentEscapeHandler(evt) {
 
 closeButton.addEventListener('click', () => closePhoto());
 
-export const showFullPhoto = (photo) => {
+const showFullPhoto = (photo) => {
 	bigPicture.classList.remove('hidden');
 	mainPicture.src = photo.url;
 	likesCount.textContent = photo.likes;
@@ -43,3 +43,5 @@ export const showFullPhoto = (photo) => {
 	commentsButton.click();
 	document.addEventListener('keydown', documentEscapeHandler);
 };
+
+export { showFullPhoto };

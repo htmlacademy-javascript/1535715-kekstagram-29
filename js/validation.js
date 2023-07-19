@@ -28,9 +28,4 @@ pristine.addValidator(imgHashTags, checkHashtagsLength, 'Максимально�
 pristine.addValidator(imgHashTags, areHashtagsUnique, 'Одинаковые хештеги запрещены');
 pristine.addValidator(imgHashTags, areHashtagsValid, 'Недопустимые символы');
 
-imgUploadForm.addEventListener('submit', (evt) => {
-	evt.preventDefault();
-	pristine.validate();
-});
-
-export {pristine, resetForm};
+export {pristine, resetForm, imgUploadForm};
