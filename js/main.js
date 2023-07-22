@@ -1,2 +1,2 @@
 import './open-upload-photo.js';
-import './fetch.js';
+import './image-sort.js';
