@@ -29,4 +29,6 @@ const createPhoto = () =>({
 	comments: Array.from({length: generateRandomInteger(0, constants.MAX_COMMENTS)}, createComment)
 });
 
-export const photos = Array.from({length: constants.PHOTO_COUNT}, createPhoto);
+const photos = Array.from({length: constants.PHOTO_COUNT}, createPhoto);
+
+export {photos};

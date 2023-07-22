@@ -1,2 +1,2 @@
-import './render-photos.js';
 import './open-upload-photo.js';
+import './fetch.js';

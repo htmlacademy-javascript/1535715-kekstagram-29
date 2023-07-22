@@ -25,4 +25,6 @@ const makeImageBigger = () => {
 scaleSmaller.addEventListener('click', () => makeImageSmaller());
 scaleBigger.addEventListener('click', () => makeImageBigger());
 
-export const resetScale = () => scaleImage(DEFAULT_SCALE);
+const resetScale = () => scaleImage(DEFAULT_SCALE);
+
+export { resetScale };

@@ -19,7 +19,7 @@ const renderComments = (comments) => {
 	commentsBlock.append(commentFragment);
 };
 
-export const createCommentRenderer = (comments) => () => {
+const createCommentRenderer = (comments) => () => {
 	const remainingAmount = comments.length - shownComments;
 	const newAmount = shownComments + Math.min(remainingAmount, 5);
 	const commentsToShow = comments.slice(shownComments, newAmount);
@@ -33,7 +33,9 @@ export const createCommentRenderer = (comments) => () => {
 	}
 };
 
-export const resetComments = () => {
+const resetComments = () => {
 	shownComments = 0;
 	commentsBlock.innerHTML = '';
 };
+
+export { createCommentRenderer, resetComments };
