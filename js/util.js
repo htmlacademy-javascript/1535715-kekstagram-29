@@ -48,3 +48,11 @@ export const showAlert = (message) => {
 		alertContainer.remove();
 	}, ALERT_SHOW_TIME);
 };
+
+export const debounce = (callback, timeout = 500) =>{
+	let timeoutId;
+	return (...rest) =>{
+		clearTimeout(timeoutId);
+		timeoutId = setTimeout(() => callback.apply(this, rest), timeout);
+	};
+};

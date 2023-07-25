@@ -1,5 +1,3 @@
-import { renderPhotos } from './render-photos.js';
-import { showAlert } from './util.js';
 
 const PHOTOS_SERVER_URL = 'https://29.javascript.pages.academy/kekstagram';
 
@@ -32,10 +30,6 @@ const loadData = (path, errorText, method = Method.GET, body = null) =>
 
 const getData = () => loadData(Path.GET_DATA, ErrorText.GET_ERROR);
 
-getData()
-	.then((data) => renderPhotos(data))
-	.catch((err) => showAlert(err.message));
-
 const sendData = (body) => loadData(Path.POST_DATA, ErrorText.POST_ERROR, Method.POST, body);
 
-export { sendData };
+export { sendData, getData};
