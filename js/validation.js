@@ -1,3 +1,5 @@
+import Pristine from 'pristinejs';
+
 const imgUploadForm = document.querySelector('.img-upload__form');
 const imgHashTags = imgUploadForm.querySelector('.text__hashtags');
 const imgComment = imgUploadForm.querySelector('.text__description');
@@ -11,7 +13,7 @@ const pristine = new Pristine(imgUploadForm, {
 	errorTextParent: 'img-upload__field-wrapper'
 });
 
-const resetForm = () => imgUploadForm.reset();
+const resetForm = () => pristine.reset();
 
 const normalizeHashtags = (hashtagsString) => hashtagsString.trim().split(' ').filter((hashtag) => Boolean(hashtag.length));
 

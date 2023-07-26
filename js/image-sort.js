@@ -50,10 +50,8 @@ imageSortContainer.addEventListener('click', (evt) => {
 	debounceRendering(getSortedImages());
 });
 
-try {
-	receivedImages = await getData();
+getData().then((photos) => {
+	receivedImages = photos;
 	renderPhotos(receivedImages);
 	imageFilters.classList.remove('img-filters--inactive');
-} catch(err){
-	showAlert(err);
-}
+}).catch((err) => showAlert(err));
