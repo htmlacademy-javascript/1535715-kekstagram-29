@@ -4,7 +4,7 @@ const imgUploadForm = document.querySelector('.img-upload__form');
 const imgHashTags = imgUploadForm.querySelector('.text__hashtags');
 const imgComment = imgUploadForm.querySelector('.text__description');
 
-const HASHTAG_REGEX = /^#[a-z0-9]{1,19}$/i;
+const HASHTAG_REGEX = /^#[a-zA-Zа-яА-Я0-9]{1,19}$/i;
 const MAX_COMMENT_LENGTH = 140;
 const MAX_HASHTAGS_LENGTH = 5;
 
@@ -13,7 +13,10 @@ const pristine = new Pristine(imgUploadForm, {
 	errorTextParent: 'img-upload__field-wrapper'
 });
 
-const resetForm = () => pristine.reset();
+const resetForm = () => {
+	pristine.reset();
+	imgUploadForm.reset();
+};
 
 const normalizeHashtags = (hashtagsString) => hashtagsString.trim().split(' ').filter((hashtag) => Boolean(hashtag.length));
 

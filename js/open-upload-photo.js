@@ -44,7 +44,6 @@ function closeImgUploadWindow() {
 	resetForm();
 	resetScale();
 	resetEffects();
-	pristine.validate();
 }
 
 imgUploadInput.addEventListener('change', () => {

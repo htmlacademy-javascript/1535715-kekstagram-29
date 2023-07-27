@@ -1,8 +1,9 @@
 import { isEscapeKey } from './util.js';
 
+const MODAL_CHECK_REGEX = /(success|error)__/;
+
 const successMessage = document.querySelector('#success').content.querySelector('.success');
 const errorMessage = document.querySelector('#error').content.querySelector('.error');
-const MODAL_CHECK_REGEX = /(success|error)__/;
 
 const closeMessageWindow = () => {
 	const messageWindow = document.querySelector('.success') || document.querySelector('.error');
