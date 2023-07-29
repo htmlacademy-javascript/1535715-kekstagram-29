@@ -16,14 +16,13 @@ const Filter = {
 let currentFilter = Filter.DEFAULT;
 let receivedImages;
 
-const debounceRendering = debounce(renderPhotos);
 
 const sortImagesRandomly = () => Math.random() - Math.random();
 
 const sortImagesByComments = (imageA, imageB) => imageB.comments.length - imageA.comments.length;
 
 const getSortedImages = () => {
-	switch(currentFilter){
+	switch (currentFilter) {
 		case Filter.DEFAULT:
 			return [...receivedImages];
 		case Filter.RANDOM:
@@ -32,6 +31,8 @@ const getSortedImages = () => {
 			return [...receivedImages].sort(sortImagesByComments);
 	}
 };
+
+const debounceRendering = debounce(() => renderPhotos(getSortedImages()));
 
 imageSortContainer.addEventListener('click', (evt) => {
 	if (!evt.target.classList.contains('img-filters__button')) {
@@ -47,7 +48,7 @@ imageSortContainer.addEventListener('click', (evt) => {
 	imageSortContainer.querySelector('.img-filters__button--active').classList.remove('img-filters__button--active');
 	clickedButton.classList.add('img-filters__button--active');
 	currentFilter = clickedButton.id;
-	debounceRendering(getSortedImages());
+	debounceRendering();
 });
 
 getData().then((photos) => {
