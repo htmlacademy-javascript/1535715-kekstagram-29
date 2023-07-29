@@ -1,4 +1,5 @@
 const ALERT_SHOW_TIME = 5000;
+const DEBOUNCE_TIMEOUT = 500;
 
 export const createIdNumber = () => {
 	let lastGeneratedId = 0;
@@ -49,7 +50,7 @@ export const showAlert = (message) => {
 	}, ALERT_SHOW_TIME);
 };
 
-export const debounce = (callback, timeout = 500) =>{
+export const debounce = (callback, timeout = DEBOUNCE_TIMEOUT) =>{
 	let timeoutId;
 	return (...rest) =>{
 		clearTimeout(timeoutId);
